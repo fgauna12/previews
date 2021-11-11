@@ -21,13 +21,9 @@ spec:
     path: helm
     repoURL: https://github.com/fgauna12/$REPO.git
     targetRevision: HEAD
-    helm:
-      values: |
-        image:
-          tag: "$FULLY_QUALIFIED_IMAGE"
-        ingress:
-          host: "$HOSTNAME"
-      version: v3
+    kustomize:
+      images:
+        - 'ghcr.io/fgauna12/front-end=$FULLY_QUALIFIED_IMAGE'
   destination:
     namespace: "$APP_ID"
     server: https://kubernetes.default.svc
@@ -42,4 +38,4 @@ EOF
 git add .
 git commit -m "Adding environment for PR $PR_ID"
 
-echo "Your environment is accessible at $HOSTNAME"
+echo "Your environment is accessible."
