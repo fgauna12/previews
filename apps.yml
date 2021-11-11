@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://github.com/fgauna12/aks-gitops-workshop.git
     targetRevision: HEAD
-    path: helm
+    path: apps
   destination:
     server: https://kubernetes.default.svc
     namespace: previews
