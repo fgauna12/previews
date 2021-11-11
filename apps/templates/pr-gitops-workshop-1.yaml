@@ -13,7 +13,7 @@ spec:
     targetRevision: HEAD
     kustomize:
       images:
-        - 'ghcr.io/fgauna12/front-end=ghcr.io/fgauna12/front-end:sha-5d469c5'
+        - 'weaveworksdemos/front-end=ghcr.io/fgauna12/front-end:sha-5d469c5'
   destination:
     namespace: "pr-gitops-workshop-1"
     server: https://kubernetes.default.svc
