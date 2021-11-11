@@ -8,7 +8,7 @@ metadata:
 spec:
   project: previews
   source:
-    path: helm
+    path: k8s
     repoURL: https://github.com/fgauna12/gitops-workshop.git
     targetRevision: HEAD
     kustomize:
