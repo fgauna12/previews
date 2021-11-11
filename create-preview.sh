@@ -1,11 +1,9 @@
 #! /bin/bash
-# ./create-preview "20.120.122.50" "repo" "1" "busybox:777"
-export INGRESS_HOST="$1"
-export REPO="$2"
-export PR_ID="$3"
+# ./create-preview "repo" "1" "busybox:777"
+export REPO="$1"
+export PR_ID="$2"
 export APP_ID="pr-$REPO-$PR_ID"
-export FULLY_QUALIFIED_IMAGE="$4"
-export HOSTNAME="$APP_ID.$INGRESS_HOST.nip.io"
+export FULLY_QUALIFIED_IMAGE="$3"
 
 cat <<EOF | tee $PWD/apps/$APP_ID.yaml
 apiVersion: argoproj.io/v1alpha1
