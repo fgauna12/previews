@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pr-repo-1
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: previews
+  source:
+    path: helm
+    repoURL: https://github.com/fgauna12/repo.git
+    targetRevision: HEAD
+    helm:
+      values: |
+        image:
+          tag: "busybox:777"
+        ingress:
+          host: "pr-repo-1.20.120.122.50.nip.io"
+      version: v3
+  destination:
+    namespace: "pr-repo-1"
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+    - CreateNamespace=true
