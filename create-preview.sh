@@ -35,5 +35,4 @@ EOF
 
 git add .
 git commit -m "Adding environment for PR $PR_ID"
-
-echo "Your environment is accessible."
+git push

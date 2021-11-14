@@ -18,7 +18,7 @@ fi
 
 CLUSTER_NAME="$1"
 RESOURCE_GROUP_NAME="$2"
-VNET_NAME="vnet-$CLUSTER_NAME-001"
+VNET_NAME="vnet-$CLUSTER_NAME"
 IDENTITY_NAME="$CLUSTER_NAME-identity"
 
 echo $'\n=== Creating resource group'
@@ -67,14 +67,16 @@ az aks create -n $CLUSTER_NAME \
        --assign-identity $IDENTITY_ID \
        --dns-service-ip 10.1.0.10 \
        --service-cidr 10.1.0.0/24 \
+       --tags "ignore-cloud-nuke=yes" \
        --node-count 1 \
        --nodepool-name "$SYSTEM_NODE_POOL_NAME"
        
-echo $'\n=== Adding system node pool'
+echo $'\n=== Adding user node pool'
 az aks nodepool add \
     --resource-group $RESOURCE_GROUP_NAME \
     --cluster-name $CLUSTER_NAME \
     --name "usera" \
+    --mode "User" \
     --node-count 2 \
     --node-vm-size "Standard_DS3_v2"
 
