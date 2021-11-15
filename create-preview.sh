@@ -21,7 +21,7 @@ spec:
     targetRevision: HEAD
     kustomize:
       images:
-        - 'ghcr.io/fgauna12/front-end=$FULLY_QUALIFIED_IMAGE'
+        - 'weaveworksdemos/front-end=$FULLY_QUALIFIED_IMAGE'
   destination:
     namespace: "$APP_ID"
     server: https://kubernetes.default.svc
