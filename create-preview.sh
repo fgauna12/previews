@@ -1,5 +1,5 @@
 #! /bin/bash
-# ./create-preview "repo" "1" "busybox:777"
+# ./create-preview.sh "repo" "1" "busybox:777"
 export REPO="$1"
 export PR_ID="$2"
 export APP_ID="pr-$REPO-$PR_ID"
