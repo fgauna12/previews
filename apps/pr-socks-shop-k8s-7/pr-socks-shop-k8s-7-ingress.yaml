@@ -9,7 +9,7 @@ metadata:
     kubernetes.io/tls-acme: "true"
 spec:
   rules:
-  - host: socks.azure.boxboat.io
+  - host: pr-socks-shop-k8s-7-socks-shop.azure.boxboat.io
     http:
       paths:
       - path: /
@@ -21,5 +21,5 @@ spec:
               number: 80
   tls:
   - hosts:
-    - socks.azure.boxboat.io
-    secretName: socks-shop-tls-secret 
+    - pr-socks-shop-k8s-7-socks-shop.azure.boxboat.io
+    secretName: pr-socks-shop-k8s-7-socks-shop-tls-secret 
