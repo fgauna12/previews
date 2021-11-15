@@ -1,0 +1,29 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Preview Environment Requested
+
+# Controls when the workflow will run
+on:
+  repository_dispatch:
+    types: [on-preview-needed]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Runs a single command using the runners shell
+      - name: Add a preview environment
+        run: |
+          set -ex
+          
+          echo "Creating preview environment for REPO: ${{ github.event.client_payload.manifests_repo }} and PR ID: ${{ github.event.client_payload.pull_request_id }}"
+          
+          ./create-preview.sh "${{ github.event.client_payload.manifests_repo }}" "${{ github.event.client_payload.pull_request_id }}" "${{ github.event.client_payload.full_image_tag }}"
