@@ -5,7 +5,7 @@ export PR_ID="$2"
 export APP_ID="pr-$REPO-$PR_ID"
 export FULLY_QUALIFIED_IMAGE="$3"
 
-cat <<EOF | tee $PWD/apps/templates/$APP_ID.yaml
+cat <<EOF | tee $PWD/apps/$APP_ID.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
