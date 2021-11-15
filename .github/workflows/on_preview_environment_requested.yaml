@@ -27,3 +27,7 @@ jobs:
           echo "Creating preview environment for REPO: ${{ github.event.client_payload.manifests_repo }} and PR ID: ${{ github.event.client_payload.pull_request_id }}"
           
           ./create-preview.sh "${{ github.event.client_payload.manifests_repo }}" "${{ github.event.client_payload.pull_request_id }}" "${{ github.event.client_payload.full_image_tag }}"
+      
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Adding preview environment definition
