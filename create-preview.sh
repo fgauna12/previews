@@ -32,7 +32,3 @@ spec:
     syncOptions:
     - CreateNamespace=true
 EOF
-
-git add .
-git commit -m "Adding environment for PR $PR_ID"
-git push
