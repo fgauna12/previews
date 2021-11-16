@@ -36,7 +36,7 @@ EOF
 
 echo "Creating ingress for the preview environment"
 
-cat << EOF | tee $PWD/apps/$($APP_ID)-ingress.yaml
+cat << EOF | tee $PWD/apps/$APP_ID-ingress.yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
