@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pr-socks-shop-k8s-11-ingress
+  namespace: pr-socks-shop-k8s-11
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+spec:
+  rules:
+  - host: pr-socks-shop-k8s-11-socks-shop.azure.boxboat.io
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: front-end
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - pr-socks-shop-k8s-11-socks-shop.azure.boxboat.io
+    secretName: pr-socks-shop-k8s-11-socks-shop-tls-secret

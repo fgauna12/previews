@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pr-socks-shop-k8s-11
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: previews
+  source:
+    path: k8s
+    repoURL: https://github.com/fgauna12/socks-shop-k8s.git
+    targetRevision: HEAD
+    kustomize:
+      images:
+        - 'weaveworksdemos/front-end=ghcr.io/fgauna12/front-end:sha-4ffadac'
+  destination:
+    namespace: "pr-socks-shop-k8s-11"
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+    - CreateNamespace=true
