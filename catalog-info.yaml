@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: previews
+  annotations:
+    github.com/project-slug: fgauna12/previews
+spec:
+  type: other
+  lifecycle: unknown
+  owner: fgauna12
